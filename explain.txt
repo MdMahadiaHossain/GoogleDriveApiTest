@@ -4,7 +4,7 @@ if we use this code we will need refresh "code" query value each time we want to
 
      def googleDriveAuthorise : Action[AnyContent] = Action.apply{
     val toBeRedirected ="http://localhost:9000/getToken"
-    val urlForRedirect = new GoogleBrowserClientRequestUrl("936895095166-02fgacesb9qb0vogu24t8d9o6ta70i5v.apps.googleusercontent.com",
+    val urlForRedirect = new GoogleBrowserClientRequestUrl("?????????.apps.googleusercontent.com",
       toBeRedirected, util.Arrays.asList(
         "https://www.googleapis.com/auth/plus.login",
         "https://www.googleapis.com/auth/drive"
@@ -39,7 +39,7 @@ if we use this code we need not to get refresh "code" query value each time to g
 
     def googleDriveAuthorise : Action[AnyContent] = Action.apply{
     val toBeRedirected ="http://localhost:9000/getToken"
-    val urlForRedirect = new GoogleBrowserClientRequestUrl("936895095166-02fgacesb9qb0vogu24t8d9o6ta70i5v.apps.googleusercontent.com",
+    val urlForRedirect = new GoogleBrowserClientRequestUrl("??????????.apps.googleusercontent.com",
       toBeRedirected, util.Arrays.asList(
         "https://www.googleapis.com/auth/plus.login",
         "https://www.googleapis.com/auth/drive"
