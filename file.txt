@@ -2,27 +2,13 @@ This blog talks about integrating the Google Drive infrastructure in Play Scala 
 
 1. Prepare the browser request URL in order to get the authorization code.
 
-1
-
 val redirectURI = "http://localhost:9000/driveAuth"
-
-2
-
-​
-
-3
 
   def authenticateToGoogle = Action { implicit request =>
 
-4
-
     val urlToRedirect = new GoogleBrowserClientRequestUrl("Client ID", redirectURI, Arrays.asList("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/drive")).set("access_type", "offline").set("response_type", "code").build()
 
-5
-
     Redirect(urlToRedirect)
-
-6
 
   }
 
@@ -38,11 +24,9 @@ Response Type : Should be set as “code” as we are demanding the authorizatio
 
 3. Once you receive the authorization code over the redirect uri that you’ve specified as like above , use this code for getting the Access Token and one time Refresh Token from Google by making a POST request on https://accounts.google.com/o/oauth2/token url. Again you’ve to send the basic credentials like Client_Id , Client_Secret , Redirect_URI etc along with this request.
 
-1
 
 ​
 
-2
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential
 
