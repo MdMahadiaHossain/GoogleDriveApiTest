@@ -7,8 +7,7 @@ This blog talks about integrating the Google Drive infrastructure in Play Scala 
 val redirectURI = "http://localhost:9000/driveAuth"
 
   def authenticateToGoogle = Action { implicit request =>
-
-    val urlToRedirect = new GoogleBrowserClientRequestUrl("Client ID", redirectURI, Arrays.asList("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/drive")).set("access_type", "offline").set("response_type", "code").build()
+  val urlToRedirect = new GoogleBrowserClientRequestUrl("Client ID", redirectURI, Arrays.asList("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/drive")).set("access_type", "offline").set("response_type", "code").build()
 
     Redirect(urlToRedirect)
 
@@ -27,14 +26,14 @@ Response Type : Should be set as “code” as we are demanding the authorizatio
 3. Once you receive the authorization code over the redirect uri that you’ve specified as like above , use this code for getting the Access Token and one time Refresh Token from Google by making a POST request on https://accounts.google.com/o/oauth2/token url. Again you’ve to send the basic credentials like Client_Id , Client_Secret , Redirect_URI etc along with this request.
 
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential
-import com.google.api.client.http.FileContent
+    import com.google.api.client.googleapis.auth.oauth2.GoogleCredential
+    import com.google.api.client.http.FileContent
 
-import com.google.api.client.http.javanet.NetHttpTransport
+    import com.google.api.client.http.javanet.NetHttpTransport
 
-import com.google.api.client.json.jackson.JacksonFactory
-import com.google.api.services.drive.Drive
-import com.google.api.services.drive.model.File
+    import com.google.api.client.json.jackson.JacksonFactory
+    import com.google.api.services.drive.Drive
+    import com.google.api.services.drive.model.File
 
 ......................................................
 
@@ -43,7 +42,7 @@ import com.google.api.services.drive.model.File
    * Google Oauth2 accessing code and exchanging it for Access & Refresh Token
  **/
 
-  def googleDriveAuthentication = Action { implicit request =>
+    def googleDriveAuthentication = Action { implicit request =>
 
     val code = request.queryString("code").toList(0)
 
@@ -86,11 +85,11 @@ import com.google.api.services.drive.model.File
 
     Ok
 
-}
+    }
 
 You’ll get the following data in response.
 
-1
+
 
 "access_token" : "ya29.AHES6ZSyNMy0btyYrYflOPkYGEF6ijCKjCASjYoxK5CuqHPOHLDG0og",  "expires_in" : 3600,  "refresh_token" : "1/U33p2VTgqIqtll2P43x6PVen156ys0EMGcrkYW4lYuMI"
 
@@ -102,20 +101,20 @@ Refresh token will be obtained only first time when the user will allow the acce
 
 
 
- val CLIENT_ID = "************.apps.googleusercontent.com"
+    val CLIENT_ID = "************.apps.googleusercontent.com"
 
-  val CLIENT_SECRET = "****************"
+    val CLIENT_SECRET = "****************"
 
-  val httpTransport = new NetHttpTransport
+    val httpTransport = new NetHttpTransport
 
-  val jsonFactory = new JacksonFactory
+    val jsonFactory = new JacksonFactory
 
-  /**
+    /**
    * Set Up Google App Credentials
 
-   **/
+    **/
    
-  def prepareGoogleDrive(accessToken: String): Drive = {
+    def prepareGoogleDrive(accessToken: String): Drive = {
 
     //Build the Google credentials and make the Drive ready to interact
 
