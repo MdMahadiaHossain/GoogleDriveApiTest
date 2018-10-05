@@ -1,0 +1,10 @@
+@(message: String)(implicit assetsFinder: AssetsFinder)
+
+@main("Welcome to Play", assetsFinder) {
+
+<div style="margin-top: 150px">
+    <p>Authorise your account</p>
+    <a href="@routes.AuthoriseOAuth2.googleAuthorise"><button>Authorise your Account</button></a>
+</div>
+
+}

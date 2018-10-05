@@ -1,0 +1,10 @@
+@import com.google.api.services.drive.model.File
+@(listOfFiles: java.util.List[File])(implicit assetsFinder: AssetsFinder)
+
+@main("Welcome to Play", assetsFinder) {
+
+@for(i <- 0 until listOfFiles.size()-1){
+<p><span>@listOfFiles.get(i).getTitle</span><span>-------------></span>"@listOfFiles.get(i).getFileSize"</p>
+}
+
+}
