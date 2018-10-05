@@ -11,8 +11,8 @@ import play.api.http.HeaderNames
 
 object GoogleAuthMetaData  {
 
-  val CLIENT_ID = "936895095166-02fgacesb9qb0vogu24t8d9o6ta70i5v.apps.googleusercontent.com"
-  val CLIENT_SECRET = "DYYLAhksVx7i_tySBPdEz06i"
+  val CLIENT_ID = "??????.apps.googleusercontent.com"
+  val CLIENT_SECRET = "???????"
   val httpTransport = new NetHttpTransport
   val jsonFactory = new JacksonFactory
   var CODE=""
